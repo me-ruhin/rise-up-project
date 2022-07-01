@@ -23,7 +23,7 @@ class AttendanceController extends Controller
     }
 
     public function getAttendanceReportsByDate(Request $request){
-        $date = $request->date;
+        $date = $request->date??date('Y-m-d');
         $reports =  $this->attendance->getReportsByDate( $date);
         return view('member.attendance',compact('reports'));
     }
