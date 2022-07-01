@@ -13,6 +13,7 @@ class AttendanceController extends Controller
     public  function __construct(Attendance $attendanceObj)
     {
        $this->attendance = $attendanceObj;
+       $this->middleware('auth');
 
     }
 

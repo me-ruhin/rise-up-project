@@ -23,7 +23,7 @@ class CreateUsersSeeder extends Seeder
         ],[
             'name'=>'Member',
             'email'=>'member@member.com',
-            'is_admin'=>'1',
+            'is_admin'=>'0',
             'photo'=>'default.png',
             'password'=> bcrypt('123456'),
          ]]);
