@@ -66,7 +66,7 @@ class User extends Authenticatable
          return  $user = User::with(['attendences'=> function($q) use($date){
             $q->whereMonth('in_time',$date['month']);
             $q->whereYear('in_time',$date['year']);
-         }])->withCount('attendences')->select('id','is_admin','name','photo',)->latest()->paginate(20);
+         }])->withCount('attendences')->select('id','is_admin','name','email','photo',)->latest()->paginate(20);
     }
     public function storeUser($data,$image){
         try{
@@ -155,7 +155,7 @@ class User extends Authenticatable
     public function hasImageExists($name){
         if($name){
             $image = public_path('uploads/'.$name);
-            if ( file_exists($image) ) {
+            if ( $name != 'default.png' && file_exists($image) ) {
                 unlink($image);
             }
         }
