@@ -29,8 +29,13 @@
 
                 <div class="col-md-12 text-center">
                     <h2>Welcom to Attendance Management System </h2>
+                     @if (Auth::check())
 
-                    <a class="btn btn-primary" href="/login"> Login </a>
+                     <a class="btn btn-primary" href="/home"> Home </a>
+                     @else
+                     <a class="btn btn-primary" href="/login"> Login </a>
+
+                     @endif
                 </div>
 
 

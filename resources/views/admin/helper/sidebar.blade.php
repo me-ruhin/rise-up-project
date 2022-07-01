@@ -1,6 +1,6 @@
 <div class="sidemenu-area">
             <div class="sidemenu-header">
-                <a href="dashboard-ecommerce.html" class="navbar-brand d-flex align-items-center">
+                <a href="/" class="navbar-brand d-flex align-items-center">
 
                     <span title="Attandence Management System">AMS</span>
                 </a>
