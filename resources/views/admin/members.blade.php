@@ -1,7 +1,7 @@
 @extends('admin.app')
 
 
-@section('title','index')
+@section('title','Member List')
 @push('css')
 
 @endpush

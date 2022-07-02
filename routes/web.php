@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Auth::routes(['register'=>false,'reset' => false]);
 
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/attendance-reports',[AttendanceController::class,'getAttendanceReports'])->name('member.reports');
 Route::post('/attendance-reports',[AttendanceController::class,'storeAttendenceReport'])->name('member.report');

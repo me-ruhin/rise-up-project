@@ -1,7 +1,7 @@
 @extends('admin.app')
 
 
-@section('title','index')
+@section('title','Dashboard')
 @push('css')
 
 @endpush

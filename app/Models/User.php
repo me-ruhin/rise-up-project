@@ -46,6 +46,7 @@ class User extends Authenticatable
 
 
     public function attendences(){
+
         return $this->hasMany(Attendance::class);
     }
 
@@ -60,7 +61,12 @@ class User extends Authenticatable
         return $this->is_admin == 1 ?'Admin':'Member';
     }
 
-
+    /**
+     * It will show all the member list and attendance report of current month
+     *
+     * @param $data
+     * @return \Illuminate\Http\Response
+     */
     public function getUserList($date)
     {
          return  $user = User::with(['attendences'=> function($q) use($date){
@@ -68,7 +74,15 @@ class User extends Authenticatable
             $q->whereYear('in_time',$date['year']);
          }])->withCount('attendences')->select('id','is_admin','name','email','photo',)->latest()->paginate(20);
     }
+
+     /**
+     * It will store new member record in database
+     *
+     * @param $data,$image
+     * @return \Illuminate\Http\Response
+     */
     public function storeUser($data,$image){
+
         try{
             DB::beginTransaction();
             $user           = new User;
@@ -88,7 +102,16 @@ class User extends Authenticatable
 
         }
     }
+
+    /**
+     * It will update member record in database
+     *
+     * @internal User $User;
+     * @param $data,$image
+     * @return \Illuminate\Http\Response
+     */
     public function updateUser($data,$image,$user){
+
         try{
             DB::beginTransaction();
 
@@ -113,8 +136,14 @@ class User extends Authenticatable
         }
     }
 
-
+    /**
+     * It will remove  member record in database
+     *
+     * @param User $User
+     * @return \Illuminate\Http\Response
+     */
     public function deleteMember($user){
+
         try{
             DB::beginTransaction();
 
@@ -128,7 +157,6 @@ class User extends Authenticatable
                 $this->hasImageExists($user->photo);
                 $user->delete();
                 DB::commit();
-
                 return true;
 
             }else{
@@ -143,16 +171,28 @@ class User extends Authenticatable
             return true;
 
         }
-
-
-
     }
 
+    /**
+     * It check is the  member record is available in database
+     *
+     * @param $userId
+     * @return \Illuminate\Http\Response
+     */
     public function hasUserExists($userId){
+
         return User::find($userId);
     }
 
+    /**
+     * It removes the image if image found without name of default.png
+     *
+     * @param $image
+     * @return \Illuminate\Http\Response
+     */
+
     public function hasImageExists($name){
+
         if($name){
             $image = public_path('uploads/'.$name);
             if ( $name != 'default.png' && file_exists($image) ) {
@@ -162,8 +202,15 @@ class User extends Authenticatable
         return true;
     }
 
+    /**
+     * It check is the request from current user or not
+     *
+     * @param $userId
+     * @return  boolen
+     */
     public function isLoggedUser($userId)
     {
         return Auth::user()->id === $userId ?false:true;
     }
+
 }

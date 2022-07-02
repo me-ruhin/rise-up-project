@@ -12,7 +12,7 @@
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="{{asset('backend/assets/css/responsive.css')}}">
 
-        <title>@yield('title','Dashboard')</title>
+        <title>@yield('title','Login')</title>
 
         <link rel="icon" type="image/png" href="{{asset('backend/assets/img/favicon.png')}}">
         @stack('css')
