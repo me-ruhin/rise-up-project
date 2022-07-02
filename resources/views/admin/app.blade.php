@@ -44,8 +44,6 @@
         <!-- Vendors Min JS -->
         <script src="{{asset('backend/assets/js/vendors.min.js')}}"></script>
 
-
-
         @stack('js')
 
         <!-- Custom JS -->
