@@ -110,7 +110,7 @@
 
                     <tr>
                         <th scope="row">{{++$key}}</th>
-                        <td>{{$report->created_at->diffForHumans()??""}}</td>
+                        <td>{{$report->created_at->format('Y-m-d')??""}}</td>
                         <td>{{$report->in_time??""}}</td>
                         <td>{{$report->out_time??""}}</td>
                         <td>{{$report->in_notation ??''}} - {{$report->out_notation ??''}}</td>
